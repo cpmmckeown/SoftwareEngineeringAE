@@ -56,6 +56,7 @@ public class MyTest
 	@Test
 	public void testTextReturnsFormatted()
 	{
+		boolean isFormated = false;
 		for(Object data : datas) 
         {
         	ArrayList<Page> pages = (ArrayList<Page>) data;
@@ -74,18 +75,17 @@ public class MyTest
         			TextParseData textParseData = (TextParseData) page.getParseData();
                     text = textParseData.getTextContent();
         		}
+        		char[] characters = text.toCharArray();
+        		for(char c : characters) 
+        		{
+        			if(Character.isUpperCase(c)) 
+        			{
+        				isFormated = true;
+        			}
+        		}
         	}
-        	boolean isFormated = false;
-    		char[] characters = text.toCharArray();
-    		for(char c : characters) 
-    		{
-    			if(Character.isUpperCase(c)) 
-    			{
-    				isFormated = true;
-    			}
-    		}
-    		assertTrue(isFormated);
         }
+		assertTrue(isFormated);
 	}
 	
 	//Will test that 11 pages are returned - 11 is expected number would expect it to crawl
@@ -101,10 +101,10 @@ public class MyTest
 	@Test
 	public void testCrawlsApprovedWebLinks() throws Exception
 	{
+    	boolean isCorrect = true;
         for(Object data : datas) 
         {
         	ArrayList<Page> pages = (ArrayList<Page>) data;
-        	boolean isCorrect = true;
         	for(Page page : pages) 
         	{
         		if(page.getWebURL().getURL().startsWith("http://www.dcs.gla.ac.uk/~bjorn/sem20172018/ae2public/")) 
@@ -112,18 +112,18 @@ public class MyTest
         			isCorrect = false;
         		}
         	}
-        	assertTrue(isCorrect);
         }
+        assertTrue(isCorrect);
 	}
 	
 	//test to show that it is not reading the 0 on the text webpage
 	@Test
 	public void testCanReadZeroInTextFile() 
 	{
+		boolean isCorrect = false;
 		for(Object data : datas) 
         {
         	ArrayList<Page> pages = (ArrayList<Page>) data;
-        	boolean isCorrect = false;
         	String text = "";
         	for(Page page : pages) 
         	{
@@ -149,7 +149,7 @@ public class MyTest
         			}
         		}
         	}
-        	assertTrue(isCorrect);
         }
+    	assertTrue(isCorrect);
 	}
 }
