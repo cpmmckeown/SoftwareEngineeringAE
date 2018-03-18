@@ -1,0 +1,9 @@
+edu.uci.ics.crawler4j.crawler
+edu.uci.ics.crawler4j.crawler.authentication
+edu.uci.ics.crawler4j.crawler.exceptions
+edu.uci.ics.crawler4j.fetcher
+edu.uci.ics.crawler4j.frontier
+edu.uci.ics.crawler4j.parser
+edu.uci.ics.crawler4j.robotstxt
+edu.uci.ics.crawler4j.url
+edu.uci.ics.crawler4j.util
